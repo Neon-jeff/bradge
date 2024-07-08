@@ -1,8 +1,8 @@
 # Bradge Fashion App
-This mobile app implements the api functionalities of an edge-cutting B2B and B2C web application called Timbu
+This is fashin store mobile app that implements the api functionalities of an edge-cutting B2B and B2C web application called Timbu, Timbu allows users to upload, share and market their digital products
 
 
-# Running the App
+# Running the App Locally
 
 1. Install dependencies
 
@@ -34,9 +34,20 @@ In the output, you'll find options to open the app in a
 - [Timbu Website](https://timbu.cloud/) visit https://timbu.cloud/
 - [Timbu Docs](https://timbu.cloud/): visit https://timbu.cloud/
 
-## Join the community
+## APP SCREENSHOTS
+## Intro Screen
+![App Intro Screen](<2024-07-08 02-30-05 High Res Screenshot.png>)
+## Product List Screen
+ ![app list screen](<2024-07-08 02-29-50 High Res Screenshot.png>)
+ 
+ ## Product Detail Screen
+  ![detail screen](<2024-07-08 02-29-26 High Res Screenshot.png>)
 
-Join our community of developers creating universal apps.
+# Download and demo the app
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Appetize Demo Link
+https://appetize.io/app/b_2f5j3wugmuf3fzfzkc64lmfana
+
+## APK Download Link
+
+https://expo.dev/artifacts/eas/2cstzm38WvcwKj44r2iz87.apk
