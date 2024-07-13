@@ -6,7 +6,7 @@ const ThemedText = ({
   text,
   style = "regular",
   size=36,
-  color = colors.black,
+  color = colors.text,
   align = "left",
   extras = {},
   children,

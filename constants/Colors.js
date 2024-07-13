@@ -6,4 +6,7 @@ export const colors = {
   black: "#2a2a2a",
   accent: "#369d84",
   dimText: "#8a8a8a",
+  tab: "#2a2a2a",
+  main: "#fa837d",
+  text: "#3a3a3a",
 };

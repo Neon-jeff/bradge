@@ -1,4 +1,4 @@
-import {
+ import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
@@ -36,7 +36,7 @@ export default function RootLayout() {
 
   return (
     <AppContextProvider>
-      <Stack>
+      <Stack screenOptions={{contentStyle:{flex:1,backgroundColor:'white'}}}>
         <Stack.Screen
           name="index"
           options={{
@@ -57,6 +57,12 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="product"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(tabs)"
           options={{
             headerShown: false,
           }}

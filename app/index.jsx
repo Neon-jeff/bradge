@@ -9,9 +9,12 @@ import { ScreenSize } from "./../constants/Sizes";
 import { transform } from "typescript";
 import { colors } from "../constants/Colors";
 import Button from "../components/Button/Button";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 
 const Index = () => {
+  if (true) {
+    return <Redirect href={"/(tabs)/products"} />;
+  }
   return (
     <PageLayout gap={70} justify={"center"}>
       <ThemedText
@@ -26,7 +29,7 @@ const Index = () => {
           borderRadius: 10,
         }}
       />
-      <View style={{ flexDirection: "row", gap: 20}}>
+      <View style={{ flexDirection: "row", gap: 20 }}>
         <Image
           source={{
             uri: "https://images.pexels.com/photos/13876110/pexels-photo-13876110.jpeg?auto=compress&cs=tinysrgb&w=600",

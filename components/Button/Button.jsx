@@ -7,17 +7,14 @@ const Button = ({ label = "Button", action = () => {} }) => {
   return (
     <Pressable
       style={{
-        backgroundColor: colors.black,
-        padding: 25,
-        borderRadius: 100,
-        paddingHorizontal: 30,
-        width: "90%",
-        alignSelf:'center'
+        backgroundColor: colors.main,
+        padding: 15,
+        borderRadius: 10,
      
       }}
       onPress={action}
     >
-      <ThemedText text={label} size={18} color={colors.white} align="center" />
+      <ThemedText text={label} size={19} color={colors.tab} align="center" />
     </Pressable>
   );
 };
