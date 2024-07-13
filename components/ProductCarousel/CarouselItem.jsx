@@ -46,14 +46,18 @@ const CarouselItem = ({ item }) => {
           alignSelf: "flex-start",
         }}
         onPress={() => {
-          if (orders.find((product) => product.product.id == item.id)){
-            return
+          if (orders.find((product) => product.product.id == item.id)) {
+            return;
           }
-            setOrders([...orders, { product: item, amount: 1 }]);
+          setOrders([...orders, { product: item, amount: 1 }]);
         }}
       >
         <ThemedText
-          text={orders.find((product) => product.product.id == item.id)?'Added':'Add to cart'}
+          text={
+            orders.find((product) => product.product.id == item.id)
+              ? "Added"
+              : "Add to cart"
+          }
           size={16}
         />
       </Pressable>

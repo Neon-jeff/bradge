@@ -12,8 +12,9 @@ import {
   withSpring,
 } from "react-native-reanimated";
 import Animated from "react-native-reanimated";
+import { ScreenSize } from "../../constants/Sizes";
 
-const ProductLoadingSkeleton = ({ height=150 }) => {
+const ProductLoadingSkeleton = ({ height = 150 }) => {
   const color = useSharedValue("#f2f2f2");
   const animatedStyles = useAnimatedStyle(() => ({
     backgroundColor: color.value,
@@ -37,10 +38,16 @@ const ProductLoadingSkeleton = ({ height=150 }) => {
   }, []);
   return (
     <Animated.View
-      style={[{ height: height, padding: 50, borderRadius: 20 }, animatedStyles]}
-    >
-     
-    </Animated.View>
+      style={[
+        {
+          height: height,
+          padding: 50,
+          borderRadius: 10,
+          width: 0.45 * ScreenSize.width,
+        },
+        animatedStyles,
+      ]}
+    ></Animated.View>
   );
 };
 

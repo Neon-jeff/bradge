@@ -47,7 +47,7 @@ const Products = () => {
             category: item.categories[0]?.name,
             image: `https://api.timbu.cloud/images/${item.photos[0].url}`,
             price: item.current_price[0]["NGN"][0],
-            id:item.id
+            id: item.id,
           };
           let response = await fetch(
             `${API_URL}/extrainfo/products/${item.id}`
@@ -87,6 +87,7 @@ const Products = () => {
       <ScrollView
         style={{ flex: 1, padding: 20, gap: 30 }}
         contentContainerStyle={{ gap: 20, paddingBottom: 70 }}
+        showsVerticalScrollIndicator={false}
       >
         <Promotion />
         <ProductCarouselList
