@@ -37,19 +37,36 @@ In the output, you'll find options to open the app in a
 - [Timbu Docs](https://timbu.cloud/): visit https://timbu.cloud/
 
 ## APP SCREENSHOTS
-## Intro Screen
-![App Intro Screen](<2024-07-08 02-30-05 High Res Screenshot.png>)
-## Product List Screen
- ![app list screen](<2024-07-08 02-29-50 High Res Screenshot.png>)
+
+### Payment Success
+![alt text](<2024-07-14 00-03-22 High Res Screenshot.png>) 
+
+### Enter Card Details Screen
+
+![alt text](<2024-07-14 00-01-48 High Res Screenshot.png>)
+
+### Card Details
+
+ ![alt text](<2024-07-14 00-00-53 High Res Screenshot.png>)
  
- ## Product Detail Screen
-  ![detail screen](<2024-07-08 02-29-26 High Res Screenshot.png>)
+ 
+ ### Checkout
+
+  ![alt text](<2024-07-14 00-00-48 High Res Screenshot.png>)
+  
+  ### Cart Page
+  
+   ![alt text](<2024-07-14 00-00-34 High Res Screenshot.png>)
+   
+   ### Product Listing Page
+   
+    ![alt text](<2024-07-14 00-00-12 High Res Screenshot.png>)
 
 # Download and demo the app
 
 ## Appetize Demo Link
-https://appetize.io/app/b_2f5j3wugmuf3fzfzkc64lmfana
+https://appetize.io/app/b_efusqpb6hmkmku5pderane6un4
 
 ## APK Download Link
 
-https://expo.dev/artifacts/eas/2cstzm38WvcwKj44r2iz87.apk
+https://expo.dev/artifacts/eas/jeKZUcbBJGUXz1yNHGzKnF.apk
