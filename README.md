@@ -1,4 +1,4 @@
-# Bradge Fashion App
+# Malltiverse Super Shop
 This is multi product vendor mobile app that implements the api functionalities of an edge-cutting B2B and B2C web application called Timbu, Timbu allows users to upload, share and market their digital products
 
 The Store sells products in the category of men's fashion, women's fashion and tech gadgets.

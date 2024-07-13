@@ -93,8 +93,8 @@ const Index = () => {
             />
           </RadioButtonGroup>
           <Field label={"Delivery"} />
-          <Field label={"Contact"} placeholder={"phone No2"} />
-          <Field placeholder={"phone No1"} />
+          <Field label={"Contact"} placeholder={"phone No2"} numeric={true}/>
+          <Field placeholder={"phone No1"} numeric={true}/>
           <Button
             label="Go to Payment"
             action={() => {

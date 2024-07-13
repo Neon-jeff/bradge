@@ -4,10 +4,23 @@ import ThemedText from "../ThemedText/ThemedText";
 import { colors } from "../../constants/Colors";
 import Icon from "../Icons/Icon";
 
-const Field = ({ label, placeholder, secure = false, width,flex }) => {
+const Field = ({
+  label,
+  placeholder,
+  secure = false,
+  width,
+  flex,
+  setState,
+  numeric = false,
+}) => {
   return (
     <View
-      style={{ gap: 10, width: width ? width : "auto", flex:flex?flex:0,  padding: 0 }}
+      style={{
+        gap: 10,
+        width: width ? width : "auto",
+        flex: flex ? flex : 0,
+        padding: 0,
+      }}
     >
       {label && <ThemedText text={label} size={18} />}
 
@@ -22,7 +35,15 @@ const Field = ({ label, placeholder, secure = false, width,flex }) => {
           borderWidth: 1,
           borderColor: colors.dimText,
         }}
+        inputMode={numeric ? "numeric" : "text"}
         cursorColor={"black"}
+        onChangeText={(value) => {
+          if (setState) {
+            setState(value);
+            return;
+          }
+          return;
+        }}
       />
     </View>
   );

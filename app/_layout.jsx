@@ -1,4 +1,4 @@
- import {
+import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
@@ -15,13 +15,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    // light: require("../assets/fonts/Onest-Light.ttf"),
-    regular: require("../assets/fonts/Onest-Regular.ttf"),
-    medium: require("../assets/fonts/Onest-Medium.ttf"),
-    bold: require("../assets/fonts/Onest-Bold.ttf"),
-    semi: require("../assets/fonts/Onest-SemiBold.ttf"),
-    desc: require("../assets/fonts/DMSans-Regular.ttf"),
+    // light: require("../assets/fonts/Montserrat-Light.ttf"),
+    regular: require("../assets/fonts/Montserrat-Regular.ttf"),
+    medium: require("../assets/fonts/Montserrat-Medium.ttf"),
+    bold: require("../assets/fonts/Montserrat-Bold.ttf"),
+    semi: require("../assets/fonts/Montserrat-SemiBold.ttf"),
   });
 
   useEffect(() => {
@@ -36,7 +34,9 @@ export default function RootLayout() {
 
   return (
     <AppContextProvider>
-      <Stack screenOptions={{contentStyle:{flex:1,backgroundColor:'white'}}}>
+      <Stack
+        screenOptions={{ contentStyle: { flex: 1, backgroundColor: "white" } }}
+      >
         <Stack.Screen
           name="index"
           options={{

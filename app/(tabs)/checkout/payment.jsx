@@ -1,5 +1,5 @@
 import { View, Text, Image, ScrollView, Pressable } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScreenSize } from "../../../constants/Sizes";
 import ThemedText from "../../../components/ThemedText/ThemedText";
@@ -8,7 +8,7 @@ import Button from "../../../components/Button/Button";
 import Icon from "../../../components/Icons/Icon";
 import { router, Redirect } from "expo-router";
 import { AppContext } from "../../../context/context";
-const Card = () => {
+const Card = ({ cardnum, exp }) => {
   return (
     <View
       style={{
@@ -31,12 +31,7 @@ const Card = () => {
           height: 0.25 * ScreenSize.height,
         }}
       />
-      <ThemedText
-        text={"2334493944932"}
-        color="white"
-        size={25}
-        style="medium"
-      />
+      <ThemedText text={cardnum} color="white" size={25} style="medium" />
       <View style={{ flexDirection: "row", gap: 50 }}>
         <View style={{ gap: 5 }}>
           <ThemedText
@@ -59,7 +54,7 @@ const Card = () => {
             size={17}
             style="regular"
           />
-          <ThemedText text={"2/30"} color="white" size={17} style="semi" />
+          <ThemedText text={exp} color="white" size={17} style="semi" />
         </View>
       </View>
     </View>
@@ -68,6 +63,8 @@ const Card = () => {
 
 const Payment = () => {
   const { orders, setOrders } = useContext(AppContext);
+  let [cardNum, setCardNum] = useState("0000 0000 0000");
+  let [exp, setExp] = useState("");
   if (orders.length == 0) {
     return <Redirect href={"/(tabs)/products"} />;
   }
@@ -102,19 +99,22 @@ const Payment = () => {
         contentContainerStyle={{ gap: 30 }}
         showsVerticalScrollIndicator={false}
       >
-        <Card />
-        <Field label={"Card Number"} placeholder={"0000 0000 0000"} />
+        <Card cardnum={cardNum} exp={exp} />
+        <Field
+          label={"Card Number"}
+          placeholder={"0000 0000 0000"}
+          setState={setCardNum}
+          numeric={true}
+        />
         <View style={{ flexDirection: "row", gap: 30 }}>
           <Field
-            label={"Card Number"}
-            placeholder={"0000 0000 0000"}
-            flex={1}
-          />
-          <Field
             label={"Card Expiry"}
-            placeholder={"0000 0000 0000"}
+            placeholder={"02-23"}
             flex={1}
+            setState={setExp}
+            numeric={true}
           />
+          <Field label={"CVV"} placeholder={"0000 0000 0000"} flex={1} numeric={true}/>
         </View>
         <Button
           label="Make Payment"
