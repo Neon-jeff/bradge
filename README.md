@@ -60,7 +60,15 @@ In the output, you'll find options to open the app in a
    
    ### Product Listing Page
    
-    ![alt text](<2024-07-14 00-00-12 High Res Screenshot.png>)
+![alt text](listing.jpg)
+
+### Order History
+
+   ![alt text](<WhatsApp Image 2024-07-21 at 23.38.30_d549b2e9.jpg>)
+
+### Wishlist page
+![alt text](wishlist.jpg)
+
 
 # Download and demo the app
 
