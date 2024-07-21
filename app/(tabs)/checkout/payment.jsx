@@ -8,6 +8,7 @@ import Button from "../../../components/Button/Button";
 import Icon from "../../../components/Icons/Icon";
 import { router, Redirect } from "expo-router";
 import { AppContext } from "../../../context/context";
+import { GetValue, SaveValue } from "../../../store/Store";
 const Card = ({ cardnum, exp }) => {
   return (
     <View
@@ -62,7 +63,7 @@ const Card = ({ cardnum, exp }) => {
 };
 
 const Payment = () => {
-  const { orders, setOrders } = useContext(AppContext);
+  const { orders, setOrders, setHistory, history } = useContext(AppContext);
   let [cardNum, setCardNum] = useState("0000 0000 0000");
   let [exp, setExp] = useState("");
   if (orders.length == 0) {
@@ -114,11 +115,34 @@ const Payment = () => {
             setState={setExp}
             numeric={true}
           />
-          <Field label={"CVV"} placeholder={"0000 0000 0000"} flex={1} numeric={true}/>
+          <Field
+            label={"CVV"}
+            placeholder={"XXX"}
+            flex={1}
+            numeric={true}
+            secure={true}
+          />
         </View>
         <Button
           label="Make Payment"
           action={() => {
+            let date = new Date();
+            date = date.toDateString(Date.now());
+            const OrderHistoryList = JSON.parse(GetValue("OrderHistory"));
+            SaveValue(
+              "OrderHistory",
+              JSON.stringify({
+                orderHistory: [
+                  ...OrderHistoryList.orderHistory,
+                  {
+                    date: date,
+                    payment: "pending",
+                    delivery: "pending",
+                    items: orders,
+                  },
+                ],
+              })
+            );
             setOrders([]);
             router.push("/(tabs)/checkout/success");
           }}

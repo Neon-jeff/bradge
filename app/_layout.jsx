@@ -9,6 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { AppContextProvider } from "../context/context";
 import "react-native-reanimated";
+import { SaveValue, GetValue } from "./../store/Store";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -30,6 +31,14 @@ export default function RootLayout() {
 
   if (!loaded) {
     return null;
+  }
+  const history = JSON.parse(GetValue("OrderHistory"))
+
+  if (history == null) {
+    SaveValue("OrderHistory", JSON.stringify({ orderHistory: [] }));
+  }
+  else{
+    SaveValue("OrderHistory", JSON.stringify({ orderHistory: [...history['orderHistory']] }));
   }
 
   return (

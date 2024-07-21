@@ -9,4 +9,5 @@ export const colors = {
   tab: "#2a2a2a",
   main: "#fa837d",
   text: "#3a3a3a",
+  tint: "#fef3f2",
 };

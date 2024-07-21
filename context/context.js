@@ -7,6 +7,8 @@ const AppContextProvider = ({ children }) => {
   const [error, SetError] = useState(null);
   const [loading, SetLoading] = useState(true);
   const [orders, setOrders] = useState([]);
+  const [history,setHistory]=useState([])
+  const [wishlist,setWishlist]=useState([])
 
   return (
     <AppContext.Provider
@@ -19,6 +21,10 @@ const AppContextProvider = ({ children }) => {
         SetLoading,
         orders,
         setOrders,
+        history,
+        setHistory,
+        wishlist,
+        setWishlist
       }}
     >
       {children}

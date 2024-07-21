@@ -5,11 +5,33 @@ import { ScreenSize } from "../../constants/Sizes";
 import { colors } from "../../constants/Colors";
 import CarouselItemRating from "./CarouselItemRating";
 import { AppContext } from "../../context/context";
+import Icon from "../Icons/Icon";
 
 const CarouselItem = ({ item }) => {
-  const { orders, setOrders } = useContext(AppContext);
+  const { orders, setOrders, wishlist, setWishlist } = useContext(AppContext);
+
   return (
-    <View style={{ width: 0.43 * ScreenSize.width, gap: 10 }}>
+    <View
+      style={{ width: 0.43 * ScreenSize.width, gap: 10, position: "relative" }}
+    >
+      <Pressable
+        style={{ position: "absolute", top: 10, right: 10, zIndex: 10 }}
+        onPress={() => {
+          if (wishlist.find((i) => i.id == item.id)) {
+            setWishlist(wishlist.filter((i) => i.id != item.id));
+            return;
+          }
+          setWishlist([...wishlist, item]);
+        }}
+      >
+        <Icon
+          name={"Heart"}
+          size={25}
+          stroke={2}
+          color={colors.main}
+          fill={wishlist.find((i) => i.id == item.id) ? colors.main : "transparent"}
+        />
+      </Pressable>
       <View
         style={{
           padding: 20,

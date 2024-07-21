@@ -1,18 +1,21 @@
-import { View, Text, ScrollView, Image } from "react-native";
-import React from "react";
-import PageLayout from "../../components/PageLayout/PageLayout";
-import ThemedText from "../../components/ThemedText/ThemedText";
-import ProductCarouselList from "../../components/ProductCarousel/ProductCarouselList";
-import Promotion from "../../components/ProductPage/Promotion";
-import { productsList } from "../../data/products";
-import { ScreenSize } from "../../constants/Sizes";
-import { AppContext } from "../../context/context";
+import { View, Text, ScrollView, Image, Alert } from "react-native";
+import React, { useState } from "react";
+import PageLayout from "../../../components/PageLayout/PageLayout";
+import ThemedText from "../../../components/ThemedText/ThemedText";
+import ProductCarouselList from "../../../components/ProductCarousel/ProductCarouselList";
+import Promotion from "../../../components/ProductPage/Promotion";
+import { productsList } from "../../../data/products";
+import { ScreenSize } from "../../../constants/Sizes";
+import { AppContext } from "../../../context/context";
 import { useContext, useEffect } from "react";
+import * as Network from "expo-network";
+import { RefreshControl, ActivityIndicator } from "react-native";
 
 const Products = () => {
   const tech = productsList.filter((item) => item.category == "tech");
   const men = productsList.filter((item) => item.category == "men");
   const women = productsList.filter((item) => item.category == "women");
+  const [refreshing, setRefreshing] = useState(true);
 
   // API CONFIGS
   const API_URL = process.env.EXPO_PUBLIC_API_URL;
@@ -29,13 +32,24 @@ const Products = () => {
     FetchProducts();
   }, []);
   const FetchProducts = async () => {
-    const productsArr = [];
+    const netState = await Network.getNetworkStateAsync();
+    if (!netState.isConnected && !netState.isInternetReachable) {
+      Alert.alert(
+        "No Internet",
+        "Turn on your internet or wifi connection to make your order"
+      );
+    }
+    let productsArr = [];
     await fetch(
       `${API_URL}/products?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`
     )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error Fetching Data");
+          Alert.alert(
+            "Error fetching products",
+            "an error occurred while fetching the products"
+          );
         }
         return res.json();
       })
@@ -59,35 +73,26 @@ const Products = () => {
         }
         SetProducts(productsArr);
         SetLoading(false);
+        setRefreshing(false);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        Alert.alert(
+          "Error fetching products",
+          "an error occurred while fetching the products"
+        );
+      });
   };
   return (
-    <PageLayout gap={25}>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          width: 0.9 * ScreenSize.width,
-          justifyContent: "center",
-          marginTop: 30,
-        }}
-      >
-        <Image
-          source={require("../../assets/images/logo.png")}
-          style={{ position: "absolute", left: 0 }}
-        />
-        <ThemedText
-          text={"Product List"}
-          size={22}
-          style="semi"
-          align="center"
-        />
-      </View>
+    <PageLayout gap={2}>
+      {refreshing ? <ActivityIndicator /> : null}
       <ScrollView
         style={{ flex: 1, padding: 20, gap: 30 }}
         contentContainerStyle={{ gap: 20, paddingBottom: 70 }}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={FetchProducts} />
+        }
       >
         <Promotion />
         <ProductCarouselList

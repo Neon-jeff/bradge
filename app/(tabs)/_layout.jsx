@@ -1,10 +1,12 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { Tabs } from "expo-router";
 import { ScreenSize } from "../../constants/Sizes";
 import { colors } from "@/constants/Colors";
+import ThemedText from "./../../components/ThemedText/ThemedText";
+import { AppContext } from "@/context/context";
 
-const TabIcon = ({ focused, icon }) => {
+const TabIcon = ({ focused, icon, number = false }) => {
   return (
     <View
       style={{
@@ -23,11 +25,17 @@ const TabIcon = ({ focused, icon }) => {
         resizeMode="contain"
         tintColor={focused ? colors.tab : "white"}
       />
+      {(number!==false && !focused) ? (
+        <View style={{ position: "absolute",top:0,right:0 }}>
+          <ThemedText text={number} size={15} color="white" style="bold" />
+        </View>
+      ) : null}
     </View>
   );
 };
 
 const TabsLayout = () => {
+  const { orders } = useContext(AppContext);
   return (
     <Tabs
       screenOptions={{
@@ -49,7 +57,6 @@ const TabsLayout = () => {
       }}
       sceneContainerStyle={{
         backgroundColor: "red",
-        flex: 1,
       }}
     >
       <Tabs.Screen
@@ -60,6 +67,7 @@ const TabsLayout = () => {
             <TabIcon
               icon={require("../../assets/icons/home.png")}
               focused={focused}
+              
             />
           ),
         }}
@@ -72,6 +80,7 @@ const TabsLayout = () => {
             <TabIcon
               icon={require("../../assets/icons/null.png")}
               focused={focused}
+              number={orders.length}
             />
           ),
         }}

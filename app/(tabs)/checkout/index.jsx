@@ -22,6 +22,7 @@ const Index = () => {
         gap: 20,
         backgroundColor: "white",
         paddingHorizontal: 20,
+
       }}
     >
       <View
@@ -49,6 +50,7 @@ const Index = () => {
         <ScrollView
           contentContainerStyle={{ gap: 25 }}
           showsVerticalScrollIndicator={false}
+    
         >
           <ThemedText
             text={"Select how to receive your package(s)"}

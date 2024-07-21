@@ -5,7 +5,7 @@ import { colors } from "../../constants/Colors";
 
 const PageLayout = ({ children,justify,padding,gap=0,align='center' }) => {
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         padding: padding,
@@ -16,7 +16,7 @@ const PageLayout = ({ children,justify,padding,gap=0,align='center' }) => {
       }}
     >
       {children}
-    </SafeAreaView>
+    </View>
   );
 };
 
